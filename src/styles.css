@@ -1,0 +1,836 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-topbar: var(--topbar);
+  --color-topbar-foreground: var(--topbar-foreground);
+  --color-navbar: var(--navbar);
+  --color-info: var(--info);
+  --font-sans: "Hind Siliguri", system-ui, sans-serif;
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.985 0.004 150);
+  --foreground: oklch(0.22 0.03 160);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.03 160);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.03 160);
+  --primary: oklch(0.45 0.13 155);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.55 0.21 27);
+  --secondary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.955 0.01 150);
+  --muted-foreground: oklch(0.5 0.02 160);
+  --accent: oklch(0.82 0.16 85);
+  --accent-foreground: oklch(0.25 0.04 70);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.91 0.012 150);
+  --input: oklch(0.91 0.012 150);
+  --ring: oklch(0.45 0.13 155);
+  --topbar: oklch(0.24 0.05 160);
+  --topbar-foreground: oklch(0.92 0.02 150);
+  --navbar: oklch(0.43 0.09 250);
+  --info: oklch(0.5 0.15 245);
+  --gradient-header: linear-gradient(110deg, oklch(1 0 0), oklch(0.97 0.03 90));
+  --gradient-rule: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
+  --shadow-card: 0 10px 30px -14px color-mix(in oklab, var(--primary) 35%, transparent);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.17 0.035 255);
+  --foreground: oklch(0.94 0.015 250);
+  --card: oklch(0.22 0.04 255);
+  --card-foreground: oklch(0.94 0.015 250);
+  --popover: oklch(0.24 0.04 255);
+  --popover-foreground: oklch(0.94 0.015 250);
+  --primary: oklch(0.72 0.14 245);
+  --primary-foreground: oklch(0.18 0.04 255);
+  --secondary: oklch(0.77 0.13 82);
+  --secondary-foreground: oklch(0.2 0.04 75);
+  --muted: oklch(0.27 0.04 255);
+  --muted-foreground: oklch(0.76 0.025 250);
+  --accent: oklch(0.78 0.13 82);
+  --accent-foreground: oklch(0.2 0.04 75);
+  --destructive: oklch(0.72 0.17 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  --border: oklch(0.48 0.04 255 / 55%);
+  --input: oklch(0.4 0.04 255 / 75%);
+  --ring: oklch(0.72 0.14 245);
+  --topbar: oklch(0.12 0.035 255);
+  --topbar-foreground: oklch(0.94 0.015 250);
+  --navbar: oklch(0.24 0.07 255);
+  --info: oklch(0.72 0.13 240);
+  --gradient-header: linear-gradient(110deg, oklch(0.22 0.04 255), oklch(0.27 0.06 275));
+  --gradient-rule: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
+  --shadow-card: 0 14px 36px -18px oklch(0.04 0.025 255 / 85%);
+  --chart-1: oklch(0.72 0.14 245);
+  --chart-2: oklch(0.72 0.14 165);
+  --chart-3: oklch(0.78 0.13 82);
+  --chart-4: oklch(0.7 0.16 310);
+  --chart-5: oklch(0.72 0.17 25);
+  --sidebar: oklch(0.15 0.035 255);
+  --sidebar-foreground: oklch(0.94 0.015 250);
+  --sidebar-primary: oklch(0.72 0.14 245);
+  --sidebar-primary-foreground: oklch(0.18 0.04 255);
+  --sidebar-accent: oklch(0.27 0.04 255);
+  --sidebar-accent-foreground: oklch(0.94 0.015 250);
+  --sidebar-border: oklch(0.48 0.04 255 / 55%);
+  --sidebar-ring: oklch(0.72 0.14 245);
+}
+
+.dark body {
+  background-color: var(--background);
+}
+
+.dark .dashboard-surface {
+  background-image: radial-gradient(color-mix(in oklab, var(--color-primary) 12%, transparent) 1px, transparent 1px);
+}
+
+.dark .dashboard-panel {
+  box-shadow: 0 12px 30px -22px oklch(0.04 0.025 255 / 90%);
+}
+
+.dark .admin-login-page {
+  background: oklch(0.15 0.045 255);
+  color: oklch(0.93 0.02 250);
+}
+
+.dark .admin-login-card {
+  background: oklch(0.22 0.04 255);
+  color: oklch(0.93 0.02 250);
+}
+
+.dark .admin-login-card h1,
+.dark .admin-login-card label,
+.dark .admin-login-card .admin-login-copy {
+  color: oklch(0.9 0.04 245);
+}
+
+.dark .admin-login-card label {
+  border-color: oklch(0.47 0.05 250);
+  background: oklch(0.18 0.035 255);
+}
+
+.dark .admin-login-card input {
+  color: oklch(0.95 0.015 250);
+}
+
+.dark .admin-login-card input::placeholder {
+  color: oklch(0.68 0.03 250);
+}
+
+.dark .admin-login-card button:not([type="submit"]),
+.dark .admin-login-card a {
+  color: oklch(0.82 0.09 245);
+}
+
+.dark .admin-login-card button:not([type="submit"]):hover,
+.dark .admin-login-card a:hover {
+  color: oklch(0.92 0.06 240);
+}
+
+.dark .admin-login-card .admin-login-back {
+  color: oklch(0.84 0.08 245);
+}
+
+.dark .admin-login-card .admin-login-notice {
+  background: oklch(0.32 0.08 155 / 55%);
+  color: oklch(0.88 0.12 155);
+}
+
+.dark .admin-login-card .admin-login-error {
+  background: oklch(0.34 0.1 25 / 55%);
+  color: oklch(0.9 0.1 25);
+}
+
+.dark .admin-login-back {
+  border-color: oklch(0.62 0.1 245);
+  color: oklch(0.84 0.08 245);
+}
+
+.dark .admin-login-back:hover {
+  background: oklch(0.3 0.06 255);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    transition:
+      background-color 280ms ease,
+      color 280ms ease;
+  }
+}
+
+@utility bg-header { background-image: var(--gradient-header); }
+@utility bg-rule { background-image: var(--gradient-rule); }
+@utility shadow-card { box-shadow: var(--shadow-card); }
+@keyframes marquee { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+@utility animate-marquee { animation: marquee 28s linear infinite; }
+
+.language-loading {
+  visibility: hidden;
+}
+
+.dashboard-surface {
+  background-color: var(--color-background);
+  background-image: radial-gradient(color-mix(in oklab, var(--color-primary) 8%, transparent) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.dashboard-panel {
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 1rem;
+  background-color: var(--color-card);
+  box-shadow: 0 8px 24px -18px rgb(15 23 42 / 45%);
+}
+
+.dashboard-panel-accent {
+  border-top-color: oklch(0.62 0.14 160);
+}
+
+@keyframes entrance-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes entrance-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-image-pan {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.055);
+  }
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.icon-motion {
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.group:hover .icon-motion,
+.dashboard-panel:hover .icon-motion,
+main article:hover svg.lucide,
+main figure:hover svg.lucide,
+.dashboard-panel:hover svg.lucide,
+main a:hover svg.lucide,
+main button:hover svg.lucide,
+footer a:hover svg.lucide {
+  transform: translateY(-1px) scale(1.08);
+}
+
+.admin-login-card {
+  animation: entrance-up 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-slide-active {
+  animation: hero-image-pan 5.2s ease-out both;
+}
+
+.site-topbar,
+.site-header,
+.site-navigation,
+.notice-ticker,
+.link-strip {
+  animation: entrance-down 500ms ease-out both;
+}
+
+.site-header {
+  animation-delay: 60ms;
+}
+
+.site-navigation {
+  animation-delay: 120ms;
+}
+
+.site-navigation li > ul {
+  transform-origin: top;
+}
+
+.site-navigation li:hover > ul,
+.site-navigation li:focus-within > ul {
+  animation: entrance-up 180ms ease-out both;
+}
+
+.notice-ticker {
+  animation-delay: 180ms;
+}
+
+.link-strip {
+  animation-delay: 240ms;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) scale(0.985);
+  transition:
+    opacity 750ms ease,
+    transform 750ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+main > * > .scroll-reveal:nth-child(2),
+main > * > .scroll-reveal:nth-child(2).is-visible {
+  transition-delay: 90ms;
+}
+
+main > * > .scroll-reveal:nth-child(3),
+main > * > .scroll-reveal:nth-child(3).is-visible {
+  transition-delay: 180ms;
+}
+
+main > * > .scroll-reveal:nth-child(4),
+main > * > .scroll-reveal:nth-child(4).is-visible {
+  transition-delay: 270ms;
+}
+
+main > * > .scroll-reveal:nth-child(5),
+main > * > .scroll-reveal:nth-child(5).is-visible {
+  transition-delay: 360ms;
+}
+
+main article,
+main figure,
+main li,
+.dashboard-panel,
+main [class*="rounded-2xl"],
+.admin-login-card {
+  transition:
+    transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 320ms ease,
+    border-color 250ms ease,
+    background-color 250ms ease;
+}
+
+main article:hover,
+main figure:hover,
+main li:hover,
+.dashboard-panel:hover,
+main [class*="rounded-2xl"]:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px -20px color-mix(in oklab, var(--color-primary) 55%, transparent);
+}
+
+main article img,
+main figure img {
+  transition: transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+main article:hover img,
+main figure:hover img {
+  transform: scale(1.045);
+}
+
+main button,
+main a,
+footer a,
+header a,
+header button,
+nav a,
+nav button,
+[role="tab"],
+input,
+textarea,
+select {
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 220ms ease;
+}
+
+main button:hover,
+main a:hover,
+footer a:hover,
+header a:hover,
+header button:hover,
+nav a:hover,
+[role="tab"]:hover {
+  transform: translateY(-1px);
+}
+
+main button:active,
+main a:active,
+header button:active,
+nav a:active,
+[role="tab"]:active {
+  transform: scale(0.98);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  animation: entrance-up 180ms ease-out both;
+}
+
+.notice-ticker-track:hover .animate-marquee,
+.notice-ticker-track:focus-within .animate-marquee {
+  animation-play-state: paused;
+}
+
+.dashboard-panel,
+.dashboard-panel-accent {
+  transition:
+    transform 280ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 280ms ease,
+    border-color 220ms ease;
+}
+
+.dashboard-panel:hover,
+.dashboard-panel-accent:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 34px -24px color-mix(in oklab, var(--color-primary) 60%, transparent);
+}
+
+main h1,
+main h2,
+main h3,
+footer h4 {
+  text-wrap: balance;
+}
+
+.admin-login-card.is-visible {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-reveal:nth-child(n) {
+    transition-delay: 0ms;
+  }
+}
+
+
+
+/* =====new====== */
+/* ============================================================
+   Alokdia High School — design enhancements
+   styles.css এর একদম নিচে paste করুন (অথবা আলাদা ফাইল করে import করুন)।
+   আপনার আগের theme token (primary, secondary, accent...) ই ব্যবহার করা হয়েছে,
+   তাই রং-এর সাথে মিলে যাবে।
+   ============================================================ */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --p: var(--color-primary, var(--primary));
+  --s: var(--color-secondary, var(--secondary));
+  --a: var(--color-accent, var(--accent));
+  --shadow-soft: 0 1px 2px color-mix(in oklab, var(--p) 10%, transparent),
+    0 12px 28px -12px color-mix(in oklab, var(--p) 28%, transparent);
+  --shadow-lift: 0 2px 4px color-mix(in oklab, var(--p) 12%, transparent),
+    0 22px 40px -14px color-mix(in oklab, var(--p) 38%, transparent);
+}
+
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 4.5rem; }
+
+/* ---------- Focus (accessibility) ---------- */
+:focus-visible {
+  outline: 3px solid var(--a);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- 1. Hero: একটাই বড় orchestrated moment ---------- */
+.hero-slide-active { animation: kenburns 9s ease-out both; }
+@keyframes kenburns {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+.hero-copy > * {
+  opacity: 0;
+  animation: heroIn 0.9s var(--ease-out) forwards;
+}
+.hero-copy > :nth-child(1) { animation-delay: 0.05s; }
+.hero-copy > :nth-child(2) { animation-delay: 0.18s; }
+.hero-copy > :nth-child(3) { animation-delay: 0.32s; }
+.hero-copy > :nth-child(4) { animation-delay: 0.46s; }
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(22px); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+
+/* ---------- 2. Header & navigation ---------- */
+.site-header {
+  background-image:
+    radial-gradient(60% 120% at 100% 0%, color-mix(in oklab, var(--a) 18%, transparent), transparent 60%),
+    radial-gradient(50% 100% at 0% 100%, color-mix(in oklab, var(--p) 10%, transparent), transparent 70%);
+}
+.site-navigation {
+  backdrop-filter: saturate(140%) blur(8px);
+  box-shadow: 0 6px 20px -10px rgb(0 0 0 / 0.45);
+}
+.site-navigation a { transition: background-color 0.25s, transform 0.25s var(--ease-out); }
+.site-navigation > ul > li > a:hover { transform: translateY(-1px); }
+.site-navigation li > ul { animation: dropIn 0.22s var(--ease-out); transform-origin: top; }
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px) scaleY(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- 3. Notice ticker ---------- */
+.notice-ticker-track:hover .animate-marquee { animation-play-state: paused; }
+.notice-ticker span.bg-secondary { animation: pulseTag 2.4s ease-in-out infinite; }
+@keyframes pulseTag {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--s) 55%, transparent); }
+  50%      { box-shadow: 0 0 0 7px transparent; }
+}
+
+/* ---------- 4. Section title: underline আঁকা হয় ---------- */
+h2 + .bg-rule, .rounded.bg-rule { transform-origin: left; }
+@supports (animation-timeline: view()) {
+  h2 + .bg-rule {
+    animation: drawRule linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+  @keyframes drawRule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+/* ---------- 5. Cards: hover lift + scroll reveal (JS ছাড়াই) ---------- */
+main article, main figure.rounded-2xl, main a.rounded-2xl {
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out),
+    border-color 0.3s;
+}
+main article:hover, main figure.rounded-2xl:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+  border-color: color-mix(in oklab, var(--p) 45%, transparent);
+}
+
+/* ছবির জুম হোভারে — event card */
+main article img { transition: transform 0.7s var(--ease-out); }
+main article:hover img { transform: scale(1.06); }
+main article .relative { overflow: hidden; }
+
+@supports (animation-timeline: view()) {
+  main article, main figure, .notice-row, main li.border-b {
+    animation: revealUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+  @keyframes revealUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: none; }
+  }
+  /* hover transform-কে reveal আটকাবে না */
+  main article:hover { animation-range: entry 0% entry 35%; }
+}
+
+/* ---------- 6. Notice board date badge ---------- */
+main li.border-b a { transition: padding-left 0.3s var(--ease-out), background-color 0.3s; }
+main li.border-b a:hover {
+  padding-left: 0.75rem;
+  background: linear-gradient(90deg, color-mix(in oklab, var(--p) 7%, transparent), transparent);
+}
+main li.border-b a > span:first-child { transition: transform 0.35s var(--ease-out); }
+main li.border-b a:hover > span:first-child { transform: rotate(-4deg) scale(1.06); }
+
+/* ---------- 7. Welcome banner ---------- */
+#welcome img { animation: slowPan 24s ease-in-out infinite alternate; }
+@keyframes slowPan {
+  from { transform: scale(1.04) translateX(-1.5%); }
+  to   { transform: scale(1.12) translateX(1.5%); }
+}
+#welcome h2 { text-shadow: 0 4px 24px rgb(0 0 0 / 0.35); }
+
+/* ---------- 8. Buttons / pills ---------- */
+a.rounded-full, button.rounded-full {
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s, background-color 0.25s, color 0.25s;
+}
+a.rounded-full:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+a.rounded-full:active, button.rounded-full:active { transform: translateY(0) scale(0.97); }
+
+/* ---------- 9. Facts / achievements ---------- */
+dl > div { transition: transform 0.35s var(--ease-out), box-shadow 0.35s, border-color 0.3s; }
+dl > div:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
+dl > div:hover > span:first-child { background: var(--p); color: white; }
+dl > div > span:first-child { transition: background-color 0.3s, color 0.3s; }
+
+.bg-navbar .grid > div {
+  transition: transform 0.4s var(--ease-out), background-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.bg-navbar .grid > div::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / 0.18) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 0.9s var(--ease-out);
+}
+.bg-navbar .grid > div:hover { transform: translateY(-5px); background-color: rgb(255 255 255 / 0.16); }
+.bg-navbar .grid > div:hover::after { transform: translateX(120%); }
+
+/* ---------- 10. Result bars: নিচ থেকে বাড়ে ---------- */
+.bar-grow {
+  transform-origin: bottom;
+  animation: barGrow 1s var(--ease-out) both;
+  background-image: linear-gradient(180deg, color-mix(in oklab, var(--p) 70%, white), var(--p));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.3);
+}
+.bar-col:nth-child(2) .bar-grow { animation-delay: 0.08s; }
+.bar-col:nth-child(3) .bar-grow { animation-delay: 0.16s; }
+.bar-col:nth-child(4) .bar-grow { animation-delay: 0.24s; }
+.bar-col:nth-child(5) .bar-grow { animation-delay: 0.32s; }
+.bar-col:nth-child(n+6) .bar-grow { animation-delay: 0.4s; }
+@keyframes barGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.bar-col:hover .bar-grow { filter: brightness(1.12); }
+
+.dashboard-panel { box-shadow: var(--shadow-soft); transition: box-shadow 0.4s; }
+.dashboard-panel:hover { box-shadow: var(--shadow-lift); }
+
+/* ---------- 11. Quick access cards ---------- */
+#quick a {
+  position: relative; overflow: hidden; isolation: isolate;
+}
+#quick a::before {
+  content: "";
+  position: absolute; z-index: -1;
+  width: 160px; height: 160px; right: -50px; top: -50px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.14);
+  transition: transform 0.6s var(--ease-out);
+}
+#quick a:hover::before { transform: scale(2.6); }
+
+/* ---------- 12. Gallery ---------- */
+#gallery figure { transition: transform 0.4s var(--ease-out), box-shadow 0.4s; }
+#gallery figure:hover { transform: translateY(-4px) rotate(-0.6deg); box-shadow: var(--shadow-lift); }
+#gallery figure span.absolute {
+  transform: translateY(8px); opacity: 0.92;
+  transition: transform 0.4s var(--ease-out), opacity 0.3s;
+}
+#gallery figure:hover span.absolute { transform: none; opacity: 1; }
+
+/* ---------- 13. Alumni slider scrollbar ---------- */
+.snap-x { scrollbar-width: thin; scrollbar-color: var(--p) transparent; }
+
+/* ---------- 14. Footer ---------- */
+footer a { transition: color 0.2s, transform 0.25s var(--ease-out); }
+footer li a:hover { transform: translateX(4px); color: var(--a); }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-timeline: auto !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-copy > * { opacity: 1; }
+}
+
+/* contact new*/
+
+/* Contact page — styles.css এর নিচে paste করুন (বা import করুন) */
+
+/* Hero: ভাসমান আলো + stagger entrance */
+.ct-blob {
+  position: absolute; border-radius: 999px; filter: blur(60px); opacity: 0.45;
+  animation: ctFloat 14s ease-in-out infinite alternate;
+}
+.ct-blob-a { width: 340px; height: 340px; left: -80px; top: -120px;
+  background: var(--color-accent, var(--accent)); }
+.ct-blob-b { width: 300px; height: 300px; right: -60px; bottom: -140px;
+  background: var(--color-secondary, var(--secondary)); animation-delay: -6s; }
+@keyframes ctFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.15); }
+}
+
+.ct-rise > * { opacity: 0; animation: ctRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.ct-rise > :nth-child(1) { animation-delay: 0.05s; }
+.ct-rise > :nth-child(2) { animation-delay: 0.15s; }
+.ct-rise > :nth-child(3) { animation-delay: 0.27s; }
+.ct-rise > :nth-child(4) { animation-delay: 0.4s; }
+@keyframes ctRise {
+  from { opacity: 0; transform: translateY(22px); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+
+/* Info cards: ধাপে ধাপে ঢোকে */
+.ct-card {
+  opacity: 0; animation: ctRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 90ms + 250ms);
+  position: relative; overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s, border-color 0.3s;
+}
+.ct-card::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 3px;
+  background: var(--color-secondary, var(--secondary));
+  transform: scaleY(0); transform-origin: top; transition: transform 0.4s;
+}
+.ct-card:hover { transform: translateY(-5px); }
+.ct-card:hover::before { transform: scaleY(1); }
+.ct-card .ct-icon { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s, color 0.3s; }
+.ct-card:hover .ct-icon {
+  transform: rotate(-8deg) scale(1.1);
+  background: var(--color-primary, var(--primary)); color: white;
+}
+.ct-card .ct-link svg { transition: transform 0.3s; }
+.ct-card:hover .ct-link svg { transform: translateX(4px); }
+
+/* Form: ফিল্ড ফোকাসে সুন্দর ring */
+.ct-field {
+  border: 1.5px solid color-mix(in oklab, currentColor 18%, transparent);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.ct-field:hover { border-color: color-mix(in oklab, var(--color-primary, var(--primary)) 50%, transparent); }
+.ct-field:focus {
+  border-color: var(--color-primary, var(--primary));
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary, var(--primary)) 16%, transparent);
+  transform: translateY(-1px);
+}
+.ct-submit { position: relative; overflow: hidden; }
+.ct-submit::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / 0.28) 50%, transparent 65%);
+  transform: translateX(-120%); transition: transform 0.8s;
+}
+.ct-submit:hover::after { transform: translateX(120%); }
+.ct-submit:hover svg { transform: translateX(4px); }
+.ct-submit svg { transition: transform 0.3s; }
+.ct-status { animation: ctRise 0.5s both; }
+
+/* Map: হালকা ঢোকা + ঘেরা ফ্রেম */
+.ct-map { opacity: 0; animation: ctRise 0.9s 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.ct-map iframe { transition: filter 0.5s; filter: saturate(0.85); }
+.ct-map:hover iframe { filter: saturate(1.1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-blob { animation: none; }
+  .ct-rise > *, .ct-card, .ct-map, .ct-status { animation: none; opacity: 1; filter: none; }
+  .ct-card, .ct-field, .ct-submit::after { transition: none; }
+}

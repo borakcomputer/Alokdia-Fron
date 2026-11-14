@@ -1,0 +1,20 @@
+// Default school images are hosted in ImgBB; admin-uploaded images use the same service.
+export const logo = "https://i.ibb.co/sdxfJ9L4/logo.png";
+export const building = "https://i.ibb.co/YFMC5KPS/building.jpg";
+export const assembly = "https://i.ibb.co/fYX6GgmB/assembly.jpg";
+export const culturalGuests = "https://i.ibb.co/mCjQwSDh/cultural-guests.jpg";
+export const treePlanting = "https://i.ibb.co/kVK80xW8/tree-planting.jpg";
+export const treePlantingGroup = "https://i.ibb.co/Mynw717r/tree-planting-group.jpg";
+export const computerClass = "https://i.ibb.co/8LF0n789/computer-class.jpg";
+export const parade = "https://i.ibb.co/Lz3Zp4mZ/parade.jpg";
+export const exam = "https://i.ibb.co/67SQ1pbJ/exam.jpg";
+export const procession = "https://i.ibb.co/7NNjtdYq/procession.jpg";
+export const classroom = "https://i.ibb.co/9kVGLhKw/classroom.jpg";
+export const girlsAlpona = "https://i.ibb.co/39qVGBp9/girls-alpona.jpg";
+export const boysAlpona = "https://i.ibb.co/cXK5yT90/boys-alpona.jpg";
+export const classHall = "https://i.ibb.co/2rVH5SC/class-hall.jpg";
+export const prize1 = "https://i.ibb.co/9k5hZR6z/prize-1.jpg";
+export const prize2 = "https://i.ibb.co/tT4zQkrv/prize-2.jpg";
+export const prize3 = "https://i.ibb.co/Ztgw447/prize-3.jpg";
+export const prize4 = "https://i.ibb.co/xqhMhVWY/prize-4.jpg";
+export const prize5 = "https://i.ibb.co/xSDVn6xS/prize-5.jpg";
